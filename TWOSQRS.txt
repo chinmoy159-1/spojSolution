@@ -1,0 +1,39 @@
+/* *
+* Given integer n decide if it is possible to represent it as a sum of two squares of integers.
+*
+* Input: -
+* First line of input contains one integer c<=100 - number of test cases.
+* Then c lines follow, each of them consisting of exactly one integer 0<=n<=10^12.
+*
+* Output: -
+* For each test case output Yes if it is possible to represent given number as a sum of two squares and No if it is not possible.
+*/
+import java.io.*;
+program by Chinmoy Das
+class Main
+{
+    public static void main(String args[])throws Exception {
+        int t, c;
+        long i, a;
+        double s;
+        BufferedReader Br=new BufferedReader(new InputStreamReader(System.in));
+        t=Integer.parseInt(Br.readLine());
+        while( t-->0 ) {
+            i=Long.parseLong(Br.readLine());
+            c=0;
+            for( a=0; a*a<=i; a++ ) {
+                s=Math.sqrt(i-a*a);
+                if( Math.rint(s)==s ) {
+                    c=1;
+                    break;
+                }
+            }
+            if( c==1 ) {
+                System.out.println("Yes");
+            }
+            else {
+                System.out.println("No");
+            }
+        }
+    }
+}

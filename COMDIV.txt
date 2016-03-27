@@ -1,0 +1,50 @@
+/* *
+* You will be given T (T<=10^6) pair of numbers. All you have to tell is the number of common divisors between two numbers in each pair.
+* Input:-
+* First line of input: T (Number of test cases)
+* In next T lines, each have one pair A B (0<A,B<=10^6)
+*
+* Output:-
+* One integer describing number of common divisors between two numbers.
+*/
+#include<stdio.h>
+program by Chinmoy Das
+int gcd(int a,int b) {
+    int r;
+    while(b%a!=0)
+    {
+        r=b%a;
+        b=a;
+        a=r;
+    }
+    return a;
+}
+int main() {
+    int t,a,i,j,c;
+    int arr[1000001];
+    arr[0]=arr[1]=1;
+    for(i=2;i<1000001;i++)
+    	if(arr[i]==0)
+    		for(j=2;j*i<1000001;j++)
+    			arr[i*j]=1;
+    scanf("%d",&t);
+    while(t--) {
+        scanf("%d%d",&i,&j);
+        a=gcd(i,j);
+        c=1;
+        i=2;
+        while(i<=a&&i<1000001) {
+        	if(arr[i]==0)	{
+        		j=0;
+        		while(a%i==0) {
+        			j++;
+        			a/=i;
+        		}
+        		j++;
+        		c*=j;
+        	}
+        	i++;
+        }
+        printf("%d\n",c);
+    }
+}

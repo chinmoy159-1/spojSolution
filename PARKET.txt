@@ -1,0 +1,15 @@
+/* *
+* Check for the question on the site.
+* It contains a figure.
+*/
+#include<stdio.h>
+#include<math.h>
+program by Chinmoy Das
+int main() {
+    int b,r,j,i;
+    scanf("%d%d",&r,&b);
+    j=((r+4)-sqrt((r-4)*(r-4)-16*b))/4;
+    i=((r+4)+sqrt((r-4)*(r-4)-16*b))/4;
+    printf("%d %d\n",i,j);
+    return 0;
+}

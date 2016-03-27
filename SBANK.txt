@@ -1,0 +1,50 @@
+/* *
+* In one of the internet banks thousands of operations are being performed every day.
+* Since certain customers do business more actively than others, some of the bank accounts occur many times in the list of operations.
+* Your task is to sort the bank account numbers in ascending order. If an account appears twice or more in the list, write the number of repetitions just after the account number.
+* The format of accounts is as follows: 2 control digits, an 8-digit code of the bank, 16 digits identifying the owner (written in groups of four digits).
+* for example (at the end of each line there is exactly one space):
+*													30 10103538 2222 1233 6160 0142 
+* Banks are real-time institutions and they need FAST solutions. If you feel you can meet the challenge within a very stringent time limit, go ahead!
+* A well designed sorting algorithm in a fast language is likely to succeed.
+*
+* Input:-
+t [the number of tests <= 5] 
+n [the number of accounts<= 100 000] 
+[list of accounts] 
+[empty line] 
+[next test cases]
+*
+* Output:-
+[sorted list of accounts with the number of repeated accounts] 
+[empty line] 
+[other results]
+*/
+#include<iostream>
+#include<algorithm>
+#include<map>
+#include<cstring>
+using namespace std;
+program by Chinmoy Das
+int main ()
+{
+	int t, n;
+	cin>>t;
+	string St, a, b, c, d, e, f;
+	for ( ; t; t--) {
+		map<string, int> m1;
+		map<string, int>::iterator it;
+		cin>>n;
+		for ( ; n; n--) {
+			cin>>a>>b>>c>>d>>e>>f;
+			St = a + " " + b + " " + c + " " + d + " " + e + " " + f;
+			m1[St]++;
+		}
+		for (it = m1.begin(); it != m1.end(); it++) {
+			cout << it->first << " " << it->second << endl;
+		}
+		cout<<"\n";
+		m1.clear();
+	}
+	return 0;
+}

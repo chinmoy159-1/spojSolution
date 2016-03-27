@@ -1,0 +1,30 @@
+/* *
+* Maricruz have a lot of cards, she always uses her cards to build pyramids as shown in the following image:
+http://www.spoj.com/problems/CRDS/
+* She always wonder how many cards does she need to make a pyramid card of N levels.
+* Your task is to answer that question.
+*
+* Input:-
+* The first line of the input contains an integer 1<= T <= 1,000.
+* Each of the following T lines will have an integer 1<= N <= 1,000,000.
+*
+* Output:-
+* For each case, output a single line consisting of the number of cards needed to build a pyramid card of level N modulo 1,000,007.
+*/
+#include<stdio.h>
+program by Chinmoy Das
+int main()
+{
+    long long n,t,s,i;
+    scanf("%lli",&t);
+    while(t--)
+    {
+        scanf("%lli",&n);
+        s=0;
+        s=n*(n+1)/2;
+        s*=3;
+        s-=n;
+        s%=1000007;
+        printf("%lli\n",s);
+    }
+}

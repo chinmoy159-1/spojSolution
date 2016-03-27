@@ -1,0 +1,99 @@
+/* *
+* You have a bag filled with N balls.Each Ball has a distinct number from 1 to N printed on it.
+* All the numbers are distinct. You withdraw two balls from the bag and take their sum.
+* You need to calculate the probability that the sum is not greater than the given number K(<=N).
+* The Answer should be displayed in the form of p/q.(except when the answer is 0 or 1)
+*
+* Input: -
+* Input consists of various test cases. Each test case consist of two integer inputs,N and K. (0<=K<=N<=1000000000).
+* The program stops taking input when N and K equals -1
+*
+* Output: -
+* Output the result in the form of p/q.(Except when the answer is 0 or 1)
+*/
+/*
+* I've got two different solutions for this problem.
+*/
+/*
+* Solution 1
+*/
+#include<stdio.h>
+program by Chinmoy Das
+long long gcd(long long a, long long b) {
+    long long r;
+    while( b%a!=0 ) {
+        r=b%a;
+        b=a;
+        a=r;
+    }
+    return a;
+}
+int main() {
+    long long n, k, f, s, i;
+    while( 1 ) {
+        scanf("%lld%lld", &n, &k);
+        if( n==-1 && k==-1 ) {
+            break;
+        } else {
+            if( n<=2 || k<=2 ) {
+                printf("0\n");
+            } else {
+                s=(n*(n-1))/2;
+                i=k/2;
+                f=k*i-i*(i+1);
+                if( f==s ) {
+                    printf("1\n");
+                } else {
+                    i=gcd(f, s);
+                    f=f/i;
+                    s=s/i;
+                    printf("%lld/%lld\n", f, s);
+                }
+            }
+        }
+    }
+    return 0;
+}
+/*
+* Soluiton 2
+*/
+#include<stdio.h>
+long long gcd(long long a, long long b) {
+    long long r;
+    while( b%a!=0 ) {
+        r=b%a;
+        b=a;
+        a=r;
+    }
+    return a;
+}
+int main() {
+    long long n, k, f, s, i;
+    while( 1 ) {
+        scanf("%lld%lld", &n, &k);
+        if( n==-1 && k==-1 ) {
+            break;
+        } else {
+            if( n<=2 || k<=2 ) {
+                printf("0\n");
+            } else {
+                s=(n*(n-1))/2;
+                f=0;
+                i=1;
+                while( i<=k/2 ) {
+                    f=f+k-i-i;
+                    i++;
+                }
+                if( f==s ) {
+                    printf("1\n");
+                } else {
+                    i=gcd(f, s);
+                    f=f/i;
+                    s=s/i;
+                    printf("%lld/%lld\n", f, s);
+                }
+            }
+        }
+    }
+    return 0;
+}

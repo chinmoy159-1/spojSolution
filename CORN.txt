@@ -1,0 +1,46 @@
+/* *
+* Once Pandu wanted to eat CORN but the shopkeeper has many corns of different sizes having Same Price.
+* Pandu wants the Bigger corn but When he observes all corns he found that many small size Corns have more seeds than Bigger one so He needs your help in chosing the Corn.
+* As the Corn shape is almost like Cone and You are Good in Mathmatics(Assume you are :P) Pandu wants you to select the Corn for Him and Tell him the Total nuber of Seeds on this Corn.
+*
+* Input:-
+* First line of input is 't' - Test cases.In each of the next t lines.
+* There are three Numbers , R- Radius of the Biggest part of Corn and S-The number of Seeds in Corn per 1cm^2 and H-The hight of Corn.
+* This is in the following form
+          ReSeH
+R,S,H<1000 & Pi=3.1415
+* Output:-
+* Only one Integer i.e. the Number of Seeds on Corn.
+*/
+import java.io.*;
+program by Chinmoy Das
+public class Main
+{
+    public static void main(String args[])throws Exception
+    {
+        BufferedReader Br = new BufferedReader(new InputStreamReader(System.in));
+        int t, i, j, k;
+        String St, temp;
+        double in[], res;
+        in = new double[3];
+        t = Integer.parseInt(Br.readLine());
+        for ( ; t > 0; t--) {
+            St = Br.readLine();
+            St = St + "e";
+            j = St.length();
+            temp = "";
+            for (i = 0, k = 0; i < j; i++) {
+                if (St.charAt(i) != 'e') {
+                    temp = temp + "" + St.charAt(i);
+                } else {
+                    in[k] = Double.parseDouble(temp);
+                    temp = "";
+                    k++;
+                }
+            }
+            res = 3.1415 * in[0] * Math.sqrt(in[0]*in[0] + in[2]*in[2]) * in[1];
+            j = (int)Math.ceil(res);
+            System.out.println(j);
+        }
+    }
+}

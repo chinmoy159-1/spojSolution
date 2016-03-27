@@ -1,0 +1,42 @@
+/* *
+* Mr. Yagami is a scientist in the Bhabha Atomic Research Centre.
+* They are conducting a lab experiment on nuclear fission. In nuclear fission, one atom breaks into more than one atom of the same type.
+* Initially, there are N atoms in the lab. Starting from now (t=0), after each second, every atom will break into K atoms of the same type.
+* They don’t want the number of atoms to exceed M, so they have to stop the reaction at some time t=T. Can you find this value T for Mr. Yagami.
+*
+* Input: -
+* First line contains P, the number of test cases.
+* Next P lines contain three integers each. These three integers represent the values of N, K and M respectively.
+*
+* Output: -
+* For each test case print the time at which the reaction will have to be stopped.
+*
+* Constraints: -
+* 1 ≤ P ≤ 10^4
+* 2 ≤ N, K, M ≤ 10^18
+*/
+#include<stdio.h>
+program by Chinmoy Das
+int main()
+{
+	int t, count;
+	scanf("%d", &t);
+	unsigned long long int n, k, m;
+	for( ; t; t-- ) {
+		scanf("%llu%llu%llu", &n, &k, &m);
+		count=0;
+		if (m / k < n) {
+			printf("0\n");
+		} else {
+			while( (m/(k*n))>=1 ) {
+				n=k*n;
+				count++;
+				if( m/n<k ) {
+					break;
+				}
+			}
+			printf("%d\n", count);
+		}
+	}
+	return 0;
+}

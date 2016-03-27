@@ -1,0 +1,34 @@
+/* *
+* In number theory, the totient φ of a positive integer n is defined to be the number of positive integers less than or equal to n that are coprime to n.
+* Given an integer n (1 <= n <= 10^6). Compute the value of the totient φ.
+*
+* Input:-
+* First line contains an integer T, the number of test cases. (T <= 20000)
+* T following lines, each contains an integer n.
+*
+*Output:-
+* T lines, one for the result of each test case.
+*/
+#include<stdio.h>
+program by Chinmoy Das
+int main()
+{
+    int t,n,i,j;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d",&n);
+        j=n;
+		for(int i=2;i*i <= n;i++)
+		{
+		    if(n%i==0)
+		        j -= j/i;
+		    while(n%i==0)
+		        n/=i;
+		}
+		if(n > 1)
+		    j-=j/n;
+		printf("%d\n",j);
+	}
+    return 0;
+}

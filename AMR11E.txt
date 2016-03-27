@@ -1,0 +1,133 @@
+/* *
+* Arithmancy is Draco Malfoy's favorite subject, but what spoils it for him is that Hermione Granger is in his class,
+* and she is better than him at it.  Prime numbers are of mystical importance in Arithmancy, and Lucky Numbers even more so.
+* Lucky Numbers are those positive integers that have at least three distinct prime factors; 30 and 42 are the first two.
+* Malfoy's teacher has given them a positive integer n, and has asked them to find the nth lucky number.
+* Malfoy would like to beat Hermione at this exercise, so although he is an evil git, please help him, just this once.
+* After all, the know-it-all Hermione does need a lesson.
+*
+* Input: -
+* The first line contains the number of test cases T. Each of the next T lines contains one integer n.
+*
+* Output: -
+* Output T lines, containing the corresponding lucky number for that test case.
+*/
+#include<stdio.h>
+program by Chinmoy Das
+int main() {
+    int t, i, j, k, l, m, n;
+    int arr[10001]={0};
+    arr[0]=arr[1]=1;
+    for( i=2; i<=10000; i++ ) {
+        if( arr[i]==0 ) {
+            for( j=2; j*i<=10000; j++ ) {
+                arr[j*i]=1;
+            }
+        }
+    }
+    scanf("%d", &t);
+    while( t-- ) {
+        scanf("%d", &n);
+        for( i=30, j=1; j<=n ; i++ ) {
+            k=i;
+            l=2;
+            m=0;
+            while( k>1 ) {
+                if( arr[l]==0 && k%l==0 ) {
+                    m++;
+                    while( k%l==0 ) {
+                        k/=l;
+                    }
+                }
+                if( m==3 ) {
+                    break;
+                }
+                l++;
+            }
+            if( m==3 ) {
+                j++;
+            }
+        }
+        i--;
+        printf("%d\n", i);
+    }
+    return 0;
+}
+/*
+* Solution in JAVA
+*/
+import java.io.*;
+class Main
+{
+    public static void main(String args[])throws Exception {
+        BufferedReader Br=new BufferedReader(new InputStreamReader(System.in));
+        int t, i, j, k, l, m, n;
+        int arr[]=new int[10001];
+        arr[0]=arr[1]=1;
+        for( i=2; i<10001; i++ ) {
+            arr[i]=0;
+        }
+        for( i=2; i<10001; i++ ) {
+            if( arr[i]==0 ) {
+                for( j=2; j*i<10001; j++ ) {
+                    arr[j*i]=1;
+                }
+            }
+        }
+        t=Integer.parseInt(Br.readLine());
+        while( t-->0 ) {
+            n=Integer.parseInt(Br.readLine());
+            for( i=30, j=1; j<=n ; i++ ) {
+                k=i;
+                l=2;
+                m=0;
+                while( k>1 ) {
+                    if( arr[l]==0 && k%l==0 ) {
+                        m++;
+                        while( k%l==0 ) {
+                            k/=l;
+                        }
+                    }
+                    if( m==3 ) {
+                        break;
+                    }
+                    l++;
+                }
+                if( m==3 ) {
+                    j++;
+                }
+            }
+            i--;
+            System.out.println(i);
+        }
+    }
+}
+/*
+* A quite better approach
+*/
+#include<stdio.h>
+int main() {
+    int t, i, j, k, l, m, n;
+    int arr[10001]={0};
+    arr[0]=arr[1]=1;
+    int res[1000];
+    for(i = 2; i <= 10000; i++) {
+        if( arr[i]==0 ) {
+            for( j=2; j*i<=10000; j++ ) {
+                arr[j*i]++;
+            }
+        }
+    }
+    for (j = 30, i = 0; i < 1000; j++) {
+        if (arr[j] >= 3) {
+            res[i] = j;
+            i++;
+        }
+    }
+    scanf("%d", &t);
+    for ( ; t; t--) {
+        scanf("%d", &n);
+        printf("%d\n", res[n-1]);
+    }
+    return 0;
+}

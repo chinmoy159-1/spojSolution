@@ -1,0 +1,40 @@
+/* *
+* You would have been fed up with competitive programming questions so far ,now it is time to solve little math.
+* Assume u have a equation A * x - B * y = 0
+* For a given value of A and B , find the minimum positive integer value of x and y that satisfies this equation.
+*
+* Input: -
+* first line contains T ,number of test cases (0<=T<=1000), followed by T lines 
+* first line of each test case contains two space separated integers A and B. 1<=A,B<=1000000000 
+*
+* Output: -
+* For each test case output a single line containing two integers x and y (seperated by a single space ).
+* Print new line after each test case.
+*
+* Note: Brute force wont pass the given constraint
+* Negative number cases is avoided to make the problem easy.
+*/
+#include<stdio.h>
+#include<stdlib.h>
+program by Chinmoy Das
+long long gcd( long long a, long long b ) {
+    if( a==0 ) {
+    	return b;
+    }
+    else {
+        return gcd(b%a, a);
+    }
+}
+int main() {
+    int t;
+    long long a, b, i;
+    scanf("%d", &t);
+    while( t-- ) {
+        scanf("%lli%lli", &a, &b);
+        i=gcd(a, b);
+        a=a/i;
+        b=b/i;
+        printf("%lli %lli\n\n", b, a);
+    }
+    return 0;
+}

@@ -1,0 +1,54 @@
+/* *
+* Hemisphere Network is the largest television network in Tumbolia, a small country located east of South America (or south of East America).
+* The most popular sport in Tumbolia, unsurprisingly, is soccer; many games are broadcast every week in Tumbolia.
+* Hemisphere Network receives many requests to replay dubious plays;
+* usually, these happen when a player is deemed to be offside by the referee.
+* An attacking player is offside if he is nearer to his opponents’ goal line than the second last opponent.
+* A player is not offside if
+* 1. he is level with the second last opponent or
+* 2. he is level with the last two opponents.
+* Through the use of computer graphics technology,
+* Hemisphere Network can take an image of the field and determine the distances of the players to the defending team’s goal line,
+* but they still need a program that, given these distances, decides whether a player is offside.
+*
+* Input: -
+* The input file contains several test cases.
+* The first line of each test case contains two integers A and D separated by a single space indicating,
+* respectively, the number of attacking and defending players involved in the play (2 <= A,D <= 11).
+* The next line contains A integers Bi separated by single spaces, indicating the distances of the attacking players to the goal line (1 <= Bi <= 104).
+* The next line contains D integers Cj separated by single spaces,
+* indicating the distances of the defending players to the goal line (1 <= Cj <= 104).
+* The end of input is indicated by A = D = 0.
+*
+* Output: -
+* For each test case in the input print a line containing a single character: “Y” (uppercase) if there is an attacking player offside,
+* and “N” (uppercase) otherwise.
+*/
+#include<stdio.h>
+#include<stdlib.h>
+program by Chinmoy Das
+int cmp(const void *a, const void *b)
+{
+    return ( *(int*)a - *(int*)b );
+}
+int main()
+{
+    int a,d,i;
+    while(1)
+    {
+        scanf("%d%d",&a,&d);
+        if(a==0&&d==0)
+            break;
+        int A[a],D[d];
+        for(i=0;i<a;i++)
+            scanf("%d",&A[i]);
+        for(i=0;i<d;i++)
+            scanf("%d",&D[i]);
+        qsort(A,a,sizeof(int),cmp);
+        qsort(D,d,sizeof(int),cmp);
+        if(A[0]>=D[1])
+            printf("N\n");
+        else
+            printf("Y\n");
+    }
+}

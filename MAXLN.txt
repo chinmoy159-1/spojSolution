@@ -1,0 +1,20 @@
+/* *
+* Check for the questions from the net.
+* It contains a figure which I can't copy.
+*/
+#include<stdio.h>
+program by Chinmoy Das
+int main()
+{
+    int t,i=0,r;
+    scanf("%d",&t);
+    double arr[t];
+    while(i<t)
+    {
+        scanf("%d",&r);
+        arr[i]=(double)4*r*r+0.25;
+        i++;
+    }
+    for(i=0;i<t;i++)
+        printf("Case %d: %.2lf\n",i+1,arr[i]);
+}
